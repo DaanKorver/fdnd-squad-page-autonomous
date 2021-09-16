@@ -20,6 +20,9 @@ h1 {
 
 main {
   grid-column: 1 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main > div {
