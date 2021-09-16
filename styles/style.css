@@ -6,30 +6,36 @@
 
 body {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: auto auto;
   background-color: #fafafa;
   color: #000;
+  padding: 0 5em;
 }
 
 h1 {
-  grid-column: 1 / 5;
+  grid-column: 1 / 3;
   text-align: center;
   padding: 1em;
 }
 
 main {
-  grid-column: 1 / 4;
+  grid-column: 1 / 2;
 }
 
-main > img {
-  width: 90%;
+main > div {
+  position: relative;
+  max-width: 835px;
   margin: 0 auto;
+}
+
+main > div > img {
+  max-width: 100%;
   max-height: 80vh;
-  padding: 3em;
+  display: block;
 }
 
 nav {
-  grid-column: 4 / 5;
+  grid-column: 2 / 3;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -50,4 +56,44 @@ nav > ul li {
 nav > ul li a {
   color: #000;
   text-decoration: none;
+}
+
+#brain {
+  position: relative;
+}
+
+.point {
+  background-color: red;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cards {
+  position: relative;
+  width: 600px;
+  height: 350px;
+
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, .4);
+}
+
+.card:nth-child(1) {
+  z-index: 3;
+}
+
+.card:nth-child(2) {
+  transform: translateY(3%);
+  z-index: 2;
+}
+
+.card:nth-child(3) {
+  transform: translateY(6%);
+  z-index: 1;
 }
