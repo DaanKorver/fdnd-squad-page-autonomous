@@ -16,24 +16,32 @@
     <div id="brain">
       <div class="cards" onclick="tl.play()">
         <div class="card card-1">
-          Hello
+          <div>
+            <div class="card-top">
+              <span>BD</span>
+            </div>
+          </div>
         </div>
         <div class="card card-2">
-          Hello2
+          <div>
+
+          </div>
         </div>
         <div class="card card-3">
-    
+          <div>
+
+          </div>
         </div>
       </div>
     </div>
   </main>
   <nav>
     <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Search</a></li>
-      <li><a href="#">BRA1N</a></li>
-      <li><a href="#">Team 2 page</a></li>
-      <li><a href="#">Team 3 page</a></li>
+      <li><a href="#" onclick="setActve(this)">About</a><span class="content">ABout content</span></li>
+      <li class="active-item" onclick="setActve(this)"><a href="#">Search</a></li>
+      <li><a href="#" onclick="setActve(this)">BRA1N</a></li>
+      <li><a href="#" onclick="setActve(this)">Team 2 page</a></li>
+      <li><a href="#" onclick="setActve(this)">Team 3 page</a></li>
     </ul>
   </nav>
   <script src="scripts/script.js"></script>
