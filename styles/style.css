@@ -26,12 +26,6 @@ main {
   align-items: center;
 }
 
-main > div {
-  position: relative;
-  max-width: 835px;
-  margin: 0 auto;
-}
-
 main > div > img {
   max-width: 100%;
   max-height: 80vh;
@@ -107,6 +101,7 @@ nav > ul li a {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 nav > .content-container {
   grid-column: 1 / 3;
   overflow: scroll;
@@ -125,32 +120,46 @@ nav > .content-container li.active {
   position: relative;
 }
 
+=======
+>>>>>>> d03c9d7377b12643baf4e8d955e8131977bf4a17
 .point {
   background-color: red;
   position: absolute;
   border-radius: 50%;
 }
 
-.cards {
+section.cards {
   position: relative;
-  width: 400px;
+  max-width: 835px;
+  margin: 0 auto;
+  width: calc(380px * 2);
   height: 600px;
-
+  margin-right: calc((380px / 100) * 6);
+  flex-shrink: 0;
 }
 
-.card {
-  width: 100%;
+section.card {
+  width: 50%;
   height: 100%;
   background-color: #fdfdfd;
   border-radius: 10px;
   position: absolute;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, .4);
   padding: 2em;
-  border: solid 5px #000;
+  border: solid 2px #000;
 }
 
-.card > div {
-  border: 3px solid darkred;
+section.card__side {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+section.card__back {
+  transform: rotateY(180deg);
+}
+
+/* div.card > section {
+  border: 2px solid #050542;
   border-radius: 5px;
   width: 100%;
   height: 100%;
@@ -159,21 +168,20 @@ nav > .content-container li.active {
   justify-content: center;
 }
 
-.card > div::before {
-  content: "K";
+div.card > section::before {
+  content: "fd";
   position: absolute;
   left: -1em;
   top: -1.1em;
   font-size: 27px;
 }
 
-.card > div::after {
-  content: "K";
+div.card > section::after {
+  content: "nd";
   position: absolute;
   right: -1em;
   bottom: -1.1em;
   font-size: 27px;
-  transform: rotate(180deg);
 }
 
 .card.q > div::after,
@@ -222,3 +230,83 @@ nav > .content-container li.active {
   z-index: 1;
 }
 
+section.card__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+section.card__content > img {
+  width: 90%;
+  max-height: 50%;
+}
+
+section.card__content > img:first-child {
+  position: relative;
+  bottom: -2px;
+}
+
+section.card__content > img:last-child {
+  transform: scaleY(-1);
+  position: relative;
+  top: -2px;
+}
+
+section.card__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 2em;
+}
+
+section.card__overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: .3s opacity ease-in-out;
+}
+
+section.card__overlay:hover {
+  opacity: 1;
+}
+
+section.card__overlay > h2 {
+  font-size: 2em;
+  margin-bottom: .5em;
+}
+
+section.card__overlay > a {
+  font-size: 1em;
+  padding: 1em 2em;
+  border: 1px solid #fff;
+  color: white;
+  text-decoration: none;
+}
+
+div.arrow {
+  width: 4em;
+  height: 4em;
+  background-color: #ddd;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
+
+div.arrow.prev {
+  margin-right: 2em;
+}
+
+div.arrow.next {
+  margin-left: 2em;
+} */

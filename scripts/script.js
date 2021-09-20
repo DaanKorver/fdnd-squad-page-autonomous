@@ -1,37 +1,61 @@
-const tl = gsap.timeline({
-  delay: 2,
-  onComplete: changeContent,
-})
 
-tl.pause()
+// const nextCard = gsap.timeline({
+//   paused: true,
+//   onComplete: changeContent
+// })
 
-tl.to(".card-1", {duration: .7, x: "-110%"}, "cards")
-  .set(".card-1", {css:{zIndex: 1}})
-  .to(".card-2", {duration: .7, x: "0%"}, "cards")
-  .to(".card-3", {duration: .7, x: "3%"}, "cards")
-  .to(".card-1", {duration: 1, x: "6%"})
+// const previousCard = gsap.timeline({
+//   paused: true,
+//   onComplete: changeContent
+// })
 
+// nextCard.to(".card-1", {duration: .7, x: "-110%"}, "cards")
+//   .set(".card-1", {css:{zIndex: 1}})
+//   .to(".card-2", {duration: .7, x: "0%"}, "cards")
+//   .to(".card-3", {duration: .7, x: "3%"}, "cards")
+//   .to(".card-1", {duration: 1, x: "6%"})
 
-// tl.play()
+// previousCard.to(".card-1", {duration: .7, x: "110%"}, "cards")
+// .set(".card-1", {css:{zIndex: 1}})
+// .to(".card-2", {duration: .7, x: "0%"}, "cards")
+// .to(".card-3", {duration: .7, x: "3%"}, "cards")
+// .to(".card-1", {duration: 1, x: "6%"})
 
-let arr = ["Daan", "Beau", "Yaser", "Jean"]
+// const students = [
+//   {name: "Daan Korver", link: "http://www.daan.student.fdnd.nl"},
+//   {name: "Beau Dekker", link: "http://www.beau.student.fdnd.nl"},
+//   {name: "Jean Roger", link: "http://www.jean.student.fdnd.nl"},
+//   {name: "Yasser idk", link: "http://www.yasser.student.fdnd.nl"},
+//   {name: "Armando idk", link: "http://www.armando.student.fdnd.nl"}
+// ]
 
-const card1 = document.querySelector(".card-1")
-const card2 = document.querySelector(".card-2")
-let i = 0
+// let index = 0;
+// let canAnimate = true
+// const card1 = document.getElementById("card-1")
+// const card2 = document.getElementById("card-2")
+// const card3 = document.getElementById("card-3")
 
-function changeContent() {
-  card1.innerText = arr[i]
-  if(i+1 > (arr.length - 1)) i = -1
-  card2.innerText = arr[i + 1]
-  i++
-  tl.restart()
-  tl.pause()
-}
+// function next() {
+//   if(!canAnimate) return;
+//   index++
+//   if(index > (students.length - 1)) index = 0
+//   console.log(index);
+//   animateCardsNext()
+// }
 
-// changeContent()
+// function previous() {
+//   if(!canAnimate) return;
+//   index--
+//   if(index < 0) index = (students.length - 1)
+//   console.log(index);
+//   animateCardsPrevious()
+// }
 
+// function animateCardsNext() {
+//   nextCard.play()
+// }
 
+<<<<<<< HEAD
 
 fetch("../assets/persons.json").then(res=>{
   return res.json()
@@ -56,3 +80,12 @@ function deActive() {
     item.classList.remove("active-item");
   });
 }
+=======
+// function animateCardsPrevious() {
+//   previousCard.play()
+// }
+
+// function changeContent() {
+
+// }
+>>>>>>> d03c9d7377b12643baf4e8d955e8131977bf4a17
