@@ -19,6 +19,11 @@
           <div>
             <div class="card-top">
               <span>BD</span>
+              <img src="./assets/beau.png" />
+            </div>
+            <div class="card-bottom">
+              <span>BD</span>
+              <img src="./assets/beau.png" />
             </div>
           </div>
         </div>
@@ -36,13 +41,23 @@
     </div>
   </main>
   <nav>
+    <div class="button-container">
+      <button onclick="deActive()">&#8678;</button>
+    </div>
     <ul>
-      <li><a href="#" onclick="setActve(this)">About</a><span class="content">ABout content</span></li>
-      <li class="active-item" onclick="setActve(this)"><a href="#">Search</a></li>
-      <li><a href="#" onclick="setActve(this)">BRA1N</a></li>
-      <li><a href="#" onclick="setActve(this)">Team 2 page</a></li>
-      <li><a href="#" onclick="setActve(this)">Team 3 page</a></li>
+      <li><a href="#" onclick="setActive(this, 0)">About</a></li>
+      <li><a href="#" onclick="setActive(this, 1)">Search</a></li>
+      <li><a href="#" onclick="setActive(this, 2)">BRA1N</a></li>
+      <li><a href="#" onclick="setActive(this, 3)">Team 2 page</a></li>
+      <li><a href="#" onclick="setActive(this, 4)">Team 3 page</a></li>
     </ul>
+    <div class="content-container">
+      <li>Deze website hebben we gemaakt voor de studie FDND, voor de groepsopdracht Squad-Pages</li>
+      <li><input type="text" placeholder="Search.."><button onclick="search()">GO</button><ul id="classmates"></ul></li>
+      <li>Deze website hebben we gemaakt voor de studie FDND, voor de groepsopdracht Squad-Pages</li>
+      <li>Deze website hebben we gemaakt voor de studie FDND, voor de groepsopdracht Squad-Pages</li>
+      <li>Deze website hebben we gemaakt voor de studie FDND, voor de groepsopdracht Squad-Pages</li>
+    </div>
   </nav>
   <script src="scripts/script.js"></script>
 </body>
