@@ -1,68 +1,3 @@
-
-// const nextCard = gsap.timeline({
-//   paused: true,
-//   onComplete: changeContent
-// })
-
-// const previousCard = gsap.timeline({
-//   paused: true,
-//   onComplete: changeContent
-// })
-
-// nextCard.to(".card-1", {duration: .7, x: "-110%"}, "cards")
-//   .set(".card-1", {css:{zIndex: 1}})
-//   .to(".card-2", {duration: .7, x: "0%"}, "cards")
-//   .to(".card-3", {duration: .7, x: "3%"}, "cards")
-//   .to(".card-1", {duration: 1, x: "6%"})
-
-// previousCard.to(".card-1", {duration: .7, x: "110%"}, "cards")
-// .set(".card-1", {css:{zIndex: 1}})
-// .to(".card-2", {duration: .7, x: "0%"}, "cards")
-// .to(".card-3", {duration: .7, x: "3%"}, "cards")
-// .to(".card-1", {duration: 1, x: "6%"})
-
-// const students = [
-//   {name: "Daan Korver", link: "http://www.daan.student.fdnd.nl"},
-//   {name: "Beau Dekker", link: "http://www.beau.student.fdnd.nl"},
-//   {name: "Jean Roger", link: "http://www.jean.student.fdnd.nl"},
-//   {name: "Yasser idk", link: "http://www.yasser.student.fdnd.nl"},
-//   {name: "Armando idk", link: "http://www.armando.student.fdnd.nl"}
-// ]
-
-// let index = 0;
-// let canAnimate = true
-// const card1 = document.getElementById("card-1")
-// const card2 = document.getElementById("card-2")
-// const card3 = document.getElementById("card-3")
-
-// function next() {
-//   if(!canAnimate) return;
-//   index++
-//   if(index > (students.length - 1)) index = 0
-//   console.log(index);
-//   animateCardsNext()
-// }
-
-// function previous() {
-//   if(!canAnimate) return;
-//   index--
-//   if(index < 0) index = (students.length - 1)
-//   console.log(index);
-//   animateCardsPrevious()
-// }
-
-// function animateCardsNext() {
-//   nextCard.play()
-// }
-
-<<<<<<< HEAD
-
-fetch("../assets/persons.json").then(res=>{
-  return res.json()
-}).then(data=>{
-  console.log(data)
-})
-
 function setActive(elem, i) {
   deActive();
   document.querySelector("nav").classList.add("active");
@@ -80,12 +15,47 @@ function deActive() {
     item.classList.remove("active-item");
   });
 }
-=======
-// function animateCardsPrevious() {
-//   previousCard.play()
-// }
 
-// function changeContent() {
+// Search ------------------------------------------------
 
-// }
->>>>>>> d03c9d7377b12643baf4e8d955e8131977bf4a17
+const searchContainer = document.getElementById("search-results")
+const searchBar = document.getElementById("searchbar")
+
+async function getStudents() {
+  return await fetch("../assets/persons.json").then(res=>{
+    return res.json()
+  }).then(data=>{
+    return data.persons
+  })
+}
+
+let students = []
+getStudents().then((data)=>{
+  students = data
+  students.forEach(student=>{
+    searchContainer.innerHTML += `<p>${student.name}</p>`
+  })
+})
+
+function search(search) {
+  let results = []
+  const searchValue = search.value.toUpperCase()
+  students.forEach((student)=>{
+    if(student.name.toUpperCase().indexOf(searchValue) > -1) {
+      results.push(student)
+      console.log(student);
+    }
+  })
+  renderSearch(results)
+}
+
+function renderSearch(results) {
+  searchContainer.innerHTML = ""
+  results.forEach(result=>{
+    searchContainer.innerHTML += `<p>${result.name}</p>`
+  })
+}
+
+searchBar.addEventListener("input", function() {
+  search(this)
+})
