@@ -54,13 +54,30 @@
 // function animateCardsNext() {
 //   nextCard.play()
 // }
-
-<<<<<<< HEAD
+function populateCards(data){
+  const cards = document.querySelector("#cards ul");
+  let zIndex = 0
+  data.forEach((item)=>{
+    let element = document.createElement("LI");
+    element.innerHTML = "<div><span>"+item["name"]+"</span><span><img src='../assets/playcard.jpeg'/></span></div>";
+    element.onclick = function(e){
+      console.log(e.currentTarget)
+      e.currentTarget.style.zIndex = zIndex
+      zIndex++
+      if (e.currentTarget.classList.contains("flipped")){
+        e.currentTarget.classList.remove("flipped");
+      } else {
+        e.currentTarget.classList.add("flipped");
+      }
+    };
+    cards.appendChild(element)
+  })
+}
 
 fetch("../assets/persons.json").then(res=>{
   return res.json()
 }).then(data=>{
-  console.log(data)
+  populateCards(data.persons);
 })
 
 function setActive(elem, i) {
@@ -80,12 +97,3 @@ function deActive() {
     item.classList.remove("active-item");
   });
 }
-=======
-// function animateCardsPrevious() {
-//   previousCard.play()
-// }
-
-// function changeContent() {
-
-// }
->>>>>>> d03c9d7377b12643baf4e8d955e8131977bf4a17
