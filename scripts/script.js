@@ -1,4 +1,7 @@
 const navItems = document.getElementsByClassName("nav__item")
+const navBack = document.getElementById("backBtn")
+
+navBack.addEventListener("click", deActive)
 
 for (let i = 0; i < navItems.length; i++) {
   navItems[i].addEventListener("click", function() {
@@ -13,7 +16,6 @@ function populateCards(data){
     let element = document.createElement("LI");
     element.innerHTML = "<div><span>"+item["name"]+"</span><span><img src='../assets/playcard.jpeg'/></span></div>";
     element.onclick = function(e){
-      console.log(e.currentTarget)
       e.currentTarget.style.zIndex = zIndex
       zIndex++
       if (e.currentTarget.classList.contains("flipped")){
