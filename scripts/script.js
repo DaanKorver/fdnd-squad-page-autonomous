@@ -1,3 +1,11 @@
+const navItems = document.getElementsByClassName("nav__item")
+
+for (let i = 0; i < navItems.length; i++) {
+  navItems[i].addEventListener("click", function() {
+    setActive(this, i)
+  })
+}
+
 function populateCards(data){
   const cards = document.querySelector("#cards ul");
   let zIndex = 0

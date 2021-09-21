@@ -63,7 +63,7 @@ nav.active > ul {
 }
 
 nav.active ul li:not(.active-item) {
-  margin-top: -400vh;
+  margin-bottom: -100vh;
   opacity: 1;
   animation: dissapear .3s forwards;
   order: 0;
