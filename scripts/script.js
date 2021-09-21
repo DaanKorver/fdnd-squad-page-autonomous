@@ -1,3 +1,29 @@
+function populateCards(data){
+  const cards = document.querySelector("#cards ul");
+  let zIndex = 0
+  data.forEach((item)=>{
+    let element = document.createElement("LI");
+    element.innerHTML = "<div><span>"+item["name"]+"</span><span><img src='../assets/playcard.jpeg'/></span></div>";
+    element.onclick = function(e){
+      console.log(e.currentTarget)
+      e.currentTarget.style.zIndex = zIndex
+      zIndex++
+      if (e.currentTarget.classList.contains("flipped")){
+        e.currentTarget.classList.remove("flipped");
+      } else {
+        e.currentTarget.classList.add("flipped");
+      }
+    };
+    cards.appendChild(element)
+  })
+}
+
+fetch("../assets/persons.json").then(res=>{
+  return res.json()
+}).then(data=>{
+  populateCards(data.persons);
+})
+
 function setActive(elem, i) {
   deActive();
   document.querySelector("nav").classList.add("active");
@@ -15,47 +41,3 @@ function deActive() {
     item.classList.remove("active-item");
   });
 }
-
-// Search ------------------------------------------------
-
-const searchContainer = document.getElementById("search-results")
-const searchBar = document.getElementById("searchbar")
-
-async function getStudents() {
-  return await fetch("../assets/persons.json").then(res=>{
-    return res.json()
-  }).then(data=>{
-    return data.persons
-  })
-}
-
-let students = []
-getStudents().then((data)=>{
-  students = data
-  students.forEach(student=>{
-    searchContainer.innerHTML += `<p>${student.name}</p>`
-  })
-})
-
-function search(search) {
-  let results = []
-  const searchValue = search.value.toUpperCase()
-  students.forEach((student)=>{
-    if(student.name.toUpperCase().indexOf(searchValue) > -1) {
-      results.push(student)
-      console.log(student);
-    }
-  })
-  renderSearch(results)
-}
-
-function renderSearch(results) {
-  searchContainer.innerHTML = ""
-  results.forEach(result=>{
-    searchContainer.innerHTML += `<p>${result.name}</p>`
-  })
-}
-
-searchBar.addEventListener("input", function() {
-  search(this)
-})
