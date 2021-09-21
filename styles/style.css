@@ -99,7 +99,7 @@ nav > ul li a {
 
 nav > .content-container {
   grid-column: 1 / 3;
-  overflow: scroll;
+  overflow: auto;
 }
 
 nav > .content-container li {
