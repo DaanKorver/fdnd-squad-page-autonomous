@@ -51,3 +51,44 @@ function deActive() {
     item.classList.remove("active-item");
   });
 }
+
+const searchContainer = document.getElementById("search-results")
+const searchBar = document.getElementById("searchbar")
+
+searchBar.addEventListener("input", function() {
+  search(this)
+})
+
+async function getStudents() {
+  return await fetch("../assets/persons.json").then(res=>{
+    return res.json()
+  }).then(data=>{
+    return data.persons
+  })
+}
+
+let students = []
+getStudents().then((data)=>{
+  students = data
+  students.forEach(student=>{
+    searchContainer.innerHTML += `<p>${student.name}</p>`
+  })
+})
+
+function search(search) {
+  let results = []
+  const searchValue = search.value.toUpperCase()
+  students.forEach((student)=>{
+    if(student.name.toUpperCase().indexOf(searchValue) > -1) {
+      results.push(student)
+    }
+  })
+  renderSearch(results)
+}
+
+function renderSearch(results) {
+  searchContainer.innerHTML = ""
+  results.forEach(result=>{
+    searchContainer.innerHTML += `<p>${result.name}</p>`
+  })
+}
