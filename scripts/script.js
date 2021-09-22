@@ -14,7 +14,15 @@ function populateCards(data){
   let zIndex = 0
   data.forEach((item)=>{
     let element = document.createElement("LI");
-    element.innerHTML = "<div><span>"+item["name"]+"</span><span><img src='../assets/playcard.jpeg'/></span></div>";
+    element.setAttribute("data-name", item.name)
+    element.innerHTML = `
+    <div>
+      <span>
+        <img src="assets/${item.name.toLowerCase()}.png">
+        <img src="assets/${item.name.toLowerCase()}.png">
+      </span>
+      <span><img src='../assets/playcard.jpeg'/></span>
+    </div>`
     element.onclick = function(e){
       e.currentTarget.style.zIndex = zIndex
       zIndex++
@@ -71,7 +79,8 @@ let students = []
 getStudents().then((data)=>{
   students = data
   students.forEach(student=>{
-    searchContainer.innerHTML += `<p>${student.name}</p>`
+    let link = `http://www.${student.name.toLowerCase()}.student.fdnd.nl`
+    searchContainer.innerHTML += `<a href="${link}" target="_blank">${student.name}</a>`
   })
 })
 
@@ -89,6 +98,7 @@ function search(search) {
 function renderSearch(results) {
   searchContainer.innerHTML = ""
   results.forEach(result=>{
-    searchContainer.innerHTML += `<p>${result.name}</p>`
+    let link = `http://www.${result.name.toLowerCase()}.student.fdnd.nl`
+    searchContainer.innerHTML += `<a href="${link}">${result.name}</a>`
   })
 }
